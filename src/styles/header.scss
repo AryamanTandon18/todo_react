@@ -1,0 +1,28 @@
+$color2: rgb(255, 255, 255);
+$color3: rgb(51, 51, 51);
+$color4: #e7e7e7;
+.header {
+    background-color: rgb(51, 51, 51);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    width: 100%;
+    > div {
+      h2 {
+        text-transform: uppercase;
+        color: $color2;
+        font-weight: 400;
+      }
+    }
+  
+    > article {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      > a {
+        @include styledText;
+        @include myButton;
+      }
+    }
+  }
