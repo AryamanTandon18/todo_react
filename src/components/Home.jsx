@@ -23,7 +23,7 @@ export const Home = () => {
       toast.success(data.message);
       setRefresh(prev => !prev);
     } catch (e) {
-      toast.error(e.response.data.message)
+      // toast.error(e.response.data.message)
     }
   }
   const deleteHandler = async(id)=>{
@@ -72,12 +72,13 @@ export const Home = () => {
   if(!isAuthenticated) { return <Navigate to={"/login"}/>}
   
   return (
-    <div className="container">
+    <div className="container w-[100%] h-[100vh] py-[5rem] px-[2rem] bg-[#e7e7e7] m-auto">
       
       <div className='login'>
         <section>
       <form onSubmit={submitHandler}>
-            <input value={title} onChange={(e)=> setTitle(e.target.value)} type='text' placeholder='Title' required/>
+            <input value={title} onChange={(e)=> setTitle(e.target.value)} type='text' placeholder='Title' required
+            />
             <input value={description} onChange={(e)=> setDescription(e.target.value)} type='text' placeholder='Description' required/>
             <button disabled={loading} type='submit'>Add Task</button>
             </form>
@@ -91,6 +92,7 @@ export const Home = () => {
             deleteHandler={deleteHandler}
             id={i._id}
             key={i._id}
+            setRefresh={setRefresh} 
             />
           ))
         }

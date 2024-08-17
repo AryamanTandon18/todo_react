@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,300&display=swap");
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   margin: 0%;
   padding: 0%;
@@ -28,7 +30,7 @@ a {
   p {
     margin: 2rem 0;
     font-weight: 900;
-  }
+  } 
 }
 .todosContainer {
   @include flexBox(column, center, flex-start);
@@ -45,11 +47,6 @@ a {
   padding: 2rem;
   > div:last-of-type {
     @include flexBox(row);
-  }
-
-  input {
-    width: 2rem;
-    height: 2rem;
   }
 }
 
@@ -69,4 +66,16 @@ a {
   @include defaultStyle;
   padding: 5rem 2rem;
   background-color: $color4;
+}
+.editIcon{
+  font-size: 30px;
+  margin-left: 3px;
+  margin-right: 3px;
+  cursor: pointer;
+}
+.saveIcon{
+  font-size: 40px;
+  margin-left: 3px;
+  margin-right: 3px;
+  cursor: pointer;
 }

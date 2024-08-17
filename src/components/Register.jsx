@@ -10,30 +10,26 @@ const Register = () => {
   const [password,setPassword] = useState('')
   const {isAuthenticated,setIsAuthenticated,Loading,setLoading} = useContext(Context);
 
-   const submitHandler= async (e)=>{
+  const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
-       try {
-        console.log(server);
-        const response = await axios.post(`${server}/users/new`,{
-            name,email,password, 
-        },{
-            headers:{
-                "Content-Type":"application/json"           // aslo this is bydefault 
-            },
-            withCredentials:true,
-        })
-        console.log(server);
-        toast.success(response.data.message);
-        setIsAuthenticated(true);
-        setLoading(false);
+    try {
+      const response = await axios.post(`${server}/users/new`, { name, email, password }, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
+      toast.success(response.data.message);
+      setIsAuthenticated(true);
     } catch (error) {
-        toast.error("Some Error");
-        console.log(error.message);  
-        setIsAuthenticated(false);
-        setLoading(false);
+      const message = error.response?.data?.message || "No response received from the server";
+      console.error('Error:', error.response || error.request || error.message);
+      toast.error(message);
+      console.log("Some Error while registering");
+      setIsAuthenticated(false);
+    } finally {
+      setLoading(false);
     }
-   };
+  };
    if(isAuthenticated) return <Navigate to={"/"}/>
 
   return (
